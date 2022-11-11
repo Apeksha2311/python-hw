@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact form validationr</title>
+    <script>
+
+        function LoginF(){
+            var contact = document.LoginForm.contact.value
+
+            var regex = /^[0-9]+$/;
+
+
+            if (contact == '') {
+                document.getElementById('contactMsg').innerHTML = 'Contact field is empty';
+                document.getElementById('contactMsg').style.color = 'red';
+                console.log("Contact number block");
+                return false
+            }
+
+            else if (contact.length <= 10) {
+                document.getElementById("contactMsg").innerHTML = 'contact is less than 10 digit';
+                document.getElementById("contactMsg").style.color = 'red';
+
+                console.log(contact.length);
+                return false
+
+            }
+
+            else if (contact.length >=10) {
+                document.getElementById("contactMsg").innerHTML = 'contact should be 10 digit';
+                document.getElementById("contactMsg").style.color = 'red';
+
+                console.log(contact.length);
+                return false
+
+            }
+            if (regex.test(contact)) {
+                return true;
+            }
+            else {
+                document.getElementById("contactMsg").innerHTML = "contact should be in numbers only";
+                document.getElementById("contactMsg").style.color = "red";
+
+                return false
+            }
+
+
+        }; 
+                </script>
+</head>
+
+<body>
+    <h1>Contact form validation</h1>
+    <div>
+        <form action="" name="LoginForm" onsubmit="return LoginF()">
+            <div>
+                <label for="">Enter your Contact</label>
+                <input type="text" name="contact" id="contact">
+                <span id="contactMsg"></span>
+            </div>
+            <div>
+                <input type="submit" name="" id="" value="Submit">
+            </div>
+
+        </form>
+    </div>
+</body>
+
+</html>
